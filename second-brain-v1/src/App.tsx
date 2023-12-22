@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import NavDrawer from "./components/NavDrawer";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import BookmarksPanel from "./components/BookmarksPanel";
+import YoutubePanel from "./components/YoutubePanel";
+
+const router = createBrowserRouter([
+  {
+    path: "/bookmarks-tab ",
+    element: <BookmarksPanel />
+  },
+  {
+    path: "/youtube-tab",
+    element: <YoutubePanel />
+  }
+]);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavDrawer>
+        <RouterProvider router={router} />
+      </NavDrawer>
+    </>
   );
 }
 
